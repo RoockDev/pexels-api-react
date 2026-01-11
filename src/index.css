@@ -1,3 +1,4 @@
+
 html,
 body {
     background-color: #242424;
@@ -19,23 +20,6 @@ h1 {
     align-items: center;
 }
 
-.montserrat-light {
-    font-family: 'Montserrat Alternates', sans-serif;
-    font-weight: 300;
-    font-style: normal;
-}
-
-.montserrat-regular {
-    font-family: 'Montserrat Alternates', sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.montserrat-bold {
-    font-family: 'Montserrat Alternates', sans-serif;
-    font-weight: 700;
-    font-style: normal;
-}
 
 .search-container {
     display: flex;
@@ -43,6 +27,7 @@ h1 {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    margin-bottom: 100px;
 }
 
 .search-container input {
@@ -72,7 +57,7 @@ h1 {
     transition: background-color 0.3s ease;
 }
 
-/* Trending searches */
+
 .previous-searches {
     display: flex;
     flex-direction: column;
@@ -107,12 +92,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-.previous-searches-list li:hover {
-    background-color: #333;
-    transition: background-color 0.3s ease;
-}
 
-/* Images */
 .images-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -121,6 +101,7 @@ h1 {
     max-width: 1200px;
     margin: 0 auto;
 }
+
 
 .image-card {
     display: flex;
@@ -137,6 +118,7 @@ h1 {
     border-radius: 10px;
 }
 
+/* Media Queries para Responsive */
 @media (min-width: 768px) {
     .images-container {
         grid-template-columns: repeat(3, 1fr);

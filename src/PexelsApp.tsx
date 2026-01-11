@@ -1,45 +1,33 @@
-import { mockImages } from "./mock-data/images.mock.ts";
+import { ImageList } from './images/components/ImageList';
+
+import { SearchBar } from './shared/components/SearchBar';
+import { CustomHeader } from './shared/components/CustomHeader';
+//import { PreviousSearches } from './images/components/PreviousSearches';
+import { getImagesByQuery } from './images/actions/get-images-by-query-action';
+import { useState } from 'react';
+import { type Image } from './images/interfaces/image.interface';
+
+
 
 export const PexelsApp = () => {
+
+  const [images,setImages] = useState<Image[]>([]);
+
+  const handleSearch = async (query:string) => {
+    console.log(`Buscando: ${query}`);
+
+    const newImages = await getImagesByQuery(query);
+
+    setImages(newImages);
+  }
   return (
-  <>
-  {/**Header */}
-  <div className="content-center">
-    <h1>Buscador de imagenes</h1>
-    <p>Busca tu imagen perfecta</p>
-  </div>
-
-  {/**Search */}
-  <div className="search-container">
-    <input type="text" placeholder="Buscar imagen" />
-    <button>Buscar</button>
-  </div>
-
-  {/**Busquedas previas */}
-  <div className="previous-searches">
-    <h2>Busquedas previas</h2>
-    <ul className="previous-searches-list">
-      <li>Paisajes</li>
-      <li>Luna</li>
-      <li>Montañas</li>
-    </ul>
-  </div>
-
-  {/**Imagenes */}
-  <div className="images-container">
-    {mockImages.map((image) => (
-      <div key={image.id} className="image-card">
-        <img src={image.url} alt={image.title} />
-        <h3>{image.title}</h3>
-        <p>
-          {image.width}x{image.height} (1.5mb)
-        </p>
-      </div>
-    )
-
-    )}
-  </div>
-
-  </>
+    <>
+      <CustomHeader
+      title='Buscador de imagenes'
+      description='Busca tu imagen perfecta'
+      />
+      <SearchBar onNewSearch={handleSearch}/>
+      <ImageList images={images}/>
+    </>
   )
 }
